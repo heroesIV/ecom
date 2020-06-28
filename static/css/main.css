@@ -26,7 +26,7 @@ h1,h2,h3,h4,h5,h6{
 .product{
 	border-radius: 0 0 4px 4px;
 }
-/*<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">*/
+
 .bg-dark{
 	/*background-color: #000!important;*/
 }
