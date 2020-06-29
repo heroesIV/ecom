@@ -4,7 +4,9 @@
      <div class="row">
 		<div class="col-lg-6">
 			<div class="box-element" id="form-wrapper" >
-				<p>Contact Information:</p>
+				<h4 style="text-align: center;">Enter Details</h4>
+				<br>
+				<p style="text-align: center;">Contact Information</p>
 				<form id="form">
 					<div id="user-info">
 						<div class="form-field">
@@ -17,7 +19,7 @@
 
 					<div id="shipping-info">
 						<br>
-						<p>Shipping Information:</p>
+						<p style="text-align: center;">Shipping Information</p>
 						<div class="form-field">
 							<input class="form-control" type="text" name="flat" placeholder="Flat No. (eg. A-901)">
 						</div>
@@ -50,13 +52,16 @@
 			<div class="box-element">
 				<a  class="btn btn-outline-warning btn-sm" href="{% url 'cart' %}">< Back to Cart</a>
 				<hr>
-				<h3>Order Summary</h3>
-				<hr>
+				<h4 style="text-align: center;">Order Summary</h4>
+				<br>
+				{% for item in items %}
 				<div class="cart-row">
-					<div style="flex:1"><img class="row-image" src="{% static 'images/placeholder.png' %}"></div>
-					<div style="flex:2"><p>Product 1<br>&#8377; 100.00 &#215; 2</p></div>
+					<div style="flex:1"><img class="row-image" src="{{item.product.imageURL}}"></div>
+					<div style="flex:2"><p>{{item.product.name}}<br>&#8377; {{item.product.price}} &#215; {{item.quantity}}</p></div>
 				</div>
-				<h5>Total (2 items): &#8377; 200</h5>
+				<br>
+				{% endfor %}
+				<h5 style="text-align: center;">Total ({{order.get_cart_items}} items): &#8377; {{order.get_cart_total}}</h5>
 			</div>
 		</div>
 	</div>
