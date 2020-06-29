@@ -4,20 +4,20 @@
      <div class="row">
 		<div class="col-lg-6">
 			<div class="box-element" id="form-wrapper" >
+				<p>Contact Information:</p>
 				<form id="form">
 					<div id="user-info">
 						<div class="form-field">
-							<input required class="form-control" type="text" name="name" placeholder="Name..">
+							<input required class="form-control" type="text" name="name" placeholder="Name">
 						</div>
 						<div class="form-field">
-							<input required class="form-control" type="email" name="email" placeholder="Email..">
+							<input required class="form-control" type="phone" name="phone" placeholder="Phone">
 						</div>
 					</div>
 
 					<div id="shipping-info">
-						<hr>
+						<br>
 						<p>Shipping Information:</p>
-						<hr>
 						<div class="form-field">
 							<input class="form-control" type="text" name="flat" placeholder="Flat No. (eg. A-901)">
 						</div>
@@ -48,7 +48,7 @@
 
 		<div class="col-lg-6">
 			<div class="box-element">
-				<a  class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
+				<a  class="btn btn-outline-warning btn-sm" href="{% url 'cart' %}">< Back to Cart</a>
 				<hr>
 				<h3>Order Summary</h3>
 				<hr>

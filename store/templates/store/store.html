@@ -11,7 +11,23 @@
 </style>
 <div class="row">
 
+	{% for product in products %}
 	<div class="col-lg-4">
+		<img class="thumbnail" src="{{product.imageURL}}">
+		<div class="box-element product">
+			<h4 style="text-align: center; margin-top: 5px; margin-bottom: 15px;"><strong>{{product.name}}</strong></h4>
+			<p style="text-align: center;font-family: 'product_sansitalic';font-size: 14px;">{{product.description}}</p>
+			<br>
+			<div style="margin-right: 10px; margin-left: 20px;">
+				<button class="btn btn-warning btn-sm add-btn" id="cart-btn" style="float: right; ">Add to Cart</button>
+			<!-- <a class="btn btn-outline-success" href="">View</a> -->
+				<h4 >&#8377; {{product.price|floatformat:0}}</h4>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+
+	<!-- <div class="col-lg-4">
 		<img class="thumbnail" src="{% static 'images/placeholder.png' %}">
 		<div class="box-element product">
 			<h6><strong>Product</strong></h6>
@@ -33,9 +49,9 @@
 			<a class="btn btn-outline-success" href="">View</a>
 			<h4 style="display: inline-block; float: right;">Rs. 60</h4>
 		</div>
-	</div>
+	</div> -->
 
-	<div class="col-lg-4">
+	<!-- <div class="col-lg-4">
 		<img class="thumbnail" src="{% static 'images/placeholder.png' %}">
 		<div class="box-element product">
 			<h6><strong>Product</strong></h6>
@@ -45,7 +61,7 @@
 			<a class="btn btn-outline-success" href="">View</a>
 			<h4 style="display: inline-block; float: right;">Rs. 60</h4>
 		</div>
-	</div>
+	</div> -->
 
 </div>
 
