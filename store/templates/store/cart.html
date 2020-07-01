@@ -29,12 +29,12 @@
 
 			<div class="cart-row">
 				<div style="flex:2;">
-					<button class="btn btn-sm btn-outline-primary addsub" style="margin-right: 10px;"><strong>-</strong></button>
+					<button data-product="{{item.product.id}}" data-action="remove" class="btn btn-sm btn-outline-primary addsub update-cart" style="margin-right: 10px;"><strong>-</strong></button>
 					{{item.quantity}}
-					<button class="btn btn-sm btn-outline-primary addsub" style="margin-left: 10px;"><strong>+</strong></button>
+					<button data-product="{{item.product.id}}" data-action="add" class="btn btn-sm btn-outline-primary addsub update-cart" style="margin-left: 10px;"><strong>+</strong></button>
 				</div>
 				<div style="flex:1;">
-					<button class="btn btn-sm btn-outline-danger" style="float: right;">Delete</button>
+					<button data-product="{{item.product.id}}" data-action="delete" class="btn btn-outline-warning btn-sm update-cart" style="float: right;">Delete</button>
 				</div>
 			</div>
 		</div>

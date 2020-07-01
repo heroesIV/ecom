@@ -19,7 +19,7 @@
 			<p style="text-align: center;font-family: 'product_sansitalic';font-size: 14px;">{{product.description}}</p>
 			<br>
 			<div style="margin-right: 10px; margin-left: 20px;">
-				<button class="btn btn-warning btn-sm add-btn" id="cart-btn" style="float: right; ">Add to Cart</button>
+				<button data-product="{{product.id}}" data-action="add" class="btn btn-warning btn-sm add-btn update-cart" id="cart-btn" style="float: right; ">Add to Cart</button>
 			<!-- <a class="btn btn-outline-success" href="">View</a> -->
 				<h4 >&#8377; {{product.price|floatformat:0}}</h4>
 			</div>

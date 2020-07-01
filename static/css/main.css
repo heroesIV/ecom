@@ -193,10 +193,19 @@ h1,h2,h3,h4,h5,h6{
 }*/
 
 /*PINK BUTTONS*/
-.btn-warning, .btn-warning:hover, .btn-warning:active, .btn-warning:visited, .btn-danger, .btn-danger:hover, .btn-danger:active, .btn-danger:visited{
+.btn-warning,  .btn-warning:visited, .btn-danger, .btn-danger:visited{
 	background-color: #f1a5cf!important;
 	border-color: #f1a5cf!important;
 	color: #000;
+	font-family: product_sansbold;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.btn-warning:hover, .btn-warning:active, .btn-danger:hover, .btn-danger:active{
+	border-color: #f1a5cf!important;
+	color: #fff;
 	font-family: product_sansbold;
 	font-weight: normal;
 	text-transform: uppercase;
@@ -215,7 +224,7 @@ h1,h2,h3,h4,h5,h6{
 .btn-outline-warning:hover, .btn-outline-warning:active, .btn-outline-danger:hover, .btn-outline-danger:active{
 	border-color: #f1a5cf!important;
 	background-color: #f1a5cf!important;
-	color: #000;
+	color: #000!important;
 	font-family: product_sansregular;
 	font-weight: normal;
 	text-transform: uppercase;
