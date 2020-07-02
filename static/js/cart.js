@@ -9,6 +9,7 @@ for (i = 0; i < updateBtns.length; i++){
 		console.log('USER: ', user)
 		if (user == 'AnonymousUser'){
 			console.log('User is not authenticated')
+			updateUserOrder(productId, action)
 		}
 		else {
 			updateUserOrder(productId, action)

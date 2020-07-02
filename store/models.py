@@ -6,17 +6,21 @@ from django.contrib.auth.models import User
 class Customer(models.Model):
 
 	user 			= models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
-	name 			= models.CharField(max_length=120, null=True)
-	phone 			= models.CharField(max_length=10, null=True)
+	name 			= models.CharField(max_length=120, null=True, blank=True)
+	phone 			= models.CharField(max_length=10, null=True, blank=True)
+	device			= models.CharField(max_length=200, null=True, blank=True)
 
 	def __str__(self):
-		return self.name
+		if self.name:
+			return self.name
+		else:
+			return self.device
 
 class Product(models.Model):
 
 	name 			= models.CharField(max_length=200)
 	description 	= models.CharField(max_length=200, null=True)
-	price 			= models.FloatField()
+	price 			= models.DecimalField(max_digits=7, decimal_places=2)
 	availability 	= models.BooleanField(default=True)
 	image			= models.ImageField(null=True, blank=True)
 
@@ -44,10 +48,11 @@ class Order(models.Model):
 	date_ordered 	= models.DateTimeField(auto_now_add=True)
 	status 			= models.CharField(max_length=200, null=True, choices=STATUS, default='Pending')
 	paid 			= models.BooleanField(default=False, null=True)
+	complete 		= models.BooleanField(default=False)
 	transaction_id 	= models.CharField(max_length=100, null=True)
 
 	def __str__(self):
-		return str(self.id)
+		return str(self.customer)
 
 	@property
 	def get_cart_total(self):

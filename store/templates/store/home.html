@@ -1,0 +1,14 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<style type="text/css">
+	.navbar{
+		display: none;
+	}
+</style>
+<h1>Welcome to Cornerstone Cupcakes</h1>
+<a href="{% url 'store' %}">Buy Cupcakes</a>
+
+{% endblock %}

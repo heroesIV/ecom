@@ -1,16 +1,23 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 import json
+import datetime
 
 from .models import *
+from .forms import *
 
 # Create your views here.
+
+def home(request):
+	context = {}
+
+	return render(request, 'store/home.html', context)
 
 def store(request):
 
 	if request.user.is_authenticated:
 		customer 		= request.user.customer
-		order, created 	= Order.objects.get_or_create(customer=customer, status='Pending')
+		order, created 	= Order.objects.get_or_create(customer=customer, complete=False)
 		items 			= order.orderitem_set.all()
 		cartItems 		= order.get_cart_items
 	else:
@@ -31,7 +38,7 @@ def cart(request):
 
 	if request.user.is_authenticated:
 		customer 		= request.user.customer
-		order, created 	= Order.objects.get_or_create(customer=customer, status='Pending')
+		order, created 	= Order.objects.get_or_create(customer=customer, complete=False)
 		items 			= order.orderitem_set.all()
 		cartItems 		= order.get_cart_items
 	else:
@@ -51,7 +58,7 @@ def checkout(request):
 
 	if request.user.is_authenticated:
 		customer 		= request.user.customer
-		order, created 	= Order.objects.get_or_create(customer=customer, status='Pending')
+		order, created 	= Order.objects.get_or_create(customer=customer, complete=False)
 		items 			= order.orderitem_set.all()
 		cartItems 		= order.get_cart_items
 	else:
@@ -77,7 +84,7 @@ def updateItem(request):
 
 	customer = request.user.customer
 	product = Product.objects.get(id=productId)
-	order, created = Order.objects.get_or_create(customer=customer, status='Pending')
+	order, created = Order.objects.get_or_create(customer=customer, complete=False)
 
 	orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
 
@@ -95,3 +102,30 @@ def updateItem(request):
 		orderItem.delete()
 
 	return JsonResponse('Item was added', safe=False)
+
+def processOrder(request):
+	transaction_id 		= datetime.datetime.now().timestamp()
+
+	data 				= json.loads(request.body)
+
+	if request.user.is_authenticated:
+		customer 		= request.user.customer
+		order, created 	= Order.objects.get_or_create(customer=customer, complete=False)
+		total 			= float(data['form']['total'])
+		order.transaction_id = transaction_id
+
+		if total == order.get_cart_total:
+			order.complete = True
+
+		order.save()
+
+		ShippingAddress.objects.create(
+			customer=customer,
+			order=order,
+			flat=data['shipping']['flat'],
+			apartment=data['shipping']['apartment'],
+			)
+
+	else:
+		print('User not logged in')
+	return JsonResponse('Payment Complete', safe=False)
