@@ -205,7 +205,7 @@ h1,h2,h3,h4,h5,h6{
 
 .btn-warning:hover, .btn-warning:active, .btn-danger:hover, .btn-danger:active{
 	border-color: #f1a5cf!important;
-	color: #fff;
+	color: #fff!important;
 	font-family: product_sansbold;
 	font-weight: normal;
 	text-transform: uppercase;
@@ -261,10 +261,10 @@ h1,h2,h3,h4,h5,h6{
 	letter-spacing: 1px;
 }
 
-.btn:focus, .btn:active {
+/*.btn:focus, .btn:active {
   outline: none !important;
   box-shadow: none !important;
-}
+}*/
 
 input, textarea{
     background-color:#424242!important;
