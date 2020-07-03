@@ -13,7 +13,9 @@
 
 			<div class="subtotal" style="text-align: center;">
 				<h5 style="margin-bottom: 10px; font-family:'product_sansregular'; font-weight: normal; display: inline-block;">Subtotal (</h5><h5 id="cart-subtotal-items"style="margin-bottom: 10px; font-family:'product_sansregular'; font-weight: normal; display: inline-block; ">{{order.get_cart_items}}</h5><h5 style="margin-bottom: 10px; font-family:'product_sansregular'; font-weight: normal; display: inline-block;">&nbsp;items):&nbsp;&nbsp;&#8377;<strong id="cart-subtotal">{{order.get_cart_total|floatformat:0}}</strong></h5>
+				{% if order.get_cart_items != 0 %}
 				<a class="btn btn-success btn-block" href="{% url 'checkout' %}">Proceed to Buy</a>
+				{% endif %}
 			</div>
 		</div>
 

@@ -8,13 +8,13 @@ class Customer(models.Model):
 	user 			= models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
 	name 			= models.CharField(max_length=120, null=True, blank=True)
 	phone 			= models.CharField(max_length=10, null=True, blank=True)
-	device			= models.CharField(max_length=200, null=True, blank=True)
+	# device			= models.CharField(max_length=200, null=True, blank=True)
 
 	def __str__(self):
 		if self.name:
 			return self.name
 		else:
-			return self.device
+			return self.phone
 
 class Product(models.Model):
 
