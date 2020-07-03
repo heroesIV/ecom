@@ -14,7 +14,7 @@ class Customer(models.Model):
 		if self.name:
 			return self.name
 		else:
-			return self.phone
+			return str(self.phone)
 
 class Product(models.Model):
 
