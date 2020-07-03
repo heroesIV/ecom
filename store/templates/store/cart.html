@@ -12,7 +12,7 @@
 			<hr>
 
 			<div class="subtotal" style="text-align: center;">
-				<h5 style="margin-bottom: 10px; font-family:'product_sansregular'; font-weight: normal; ">Subtotal ({{order.get_cart_items}} items):&nbsp;&nbsp;<strong>&#8377; {{order.get_cart_total|floatformat:1}}</strong></h5>
+				<h5 style="margin-bottom: 10px; font-family:'product_sansregular'; font-weight: normal; display: inline-block;">Subtotal (</h5><h5 id="cart-subtotal-items"style="margin-bottom: 10px; font-family:'product_sansregular'; font-weight: normal; display: inline-block; ">{{order.get_cart_items}}</h5><h5 style="margin-bottom: 10px; font-family:'product_sansregular'; font-weight: normal; display: inline-block;">&nbsp;items):&nbsp;&nbsp;&#8377;<strong id="cart-subtotal">{{order.get_cart_total|floatformat:0}}</strong></h5>
 				<a class="btn btn-success btn-block" href="{% url 'checkout' %}">Proceed to Buy</a>
 			</div>
 		</div>
@@ -29,9 +29,9 @@
 
 			<div class="cart-row">
 				<div style="flex:2;">
-					<button data-product="{{item.product.id}}" data-action="remove" class="btn btn-sm btn-outline-primary addsub update-cart" style="margin-right: 10px;"><strong>-</strong></button>
-					{{item.quantity}}
-					<button data-product="{{item.product.id}}" data-action="add" class="btn btn-sm btn-outline-primary addsub update-cart" style="margin-left: 10px;"><strong>+</strong></button>
+					<button data-price="{{item.product.price}}" data-product="{{item.product.id}}" data-action="remove" class="btn btn-sm btn-outline-primary addsub update-cart" style="margin-right: 10px;"><strong>-</strong></button>
+					<strong value="{{item.product.id}}" id='prod-quantity'>{{item.quantity}}</strong>
+					<button data-price="{{item.product.price}}" data-product="{{item.product.id}}" data-action="add" class="btn btn-sm btn-outline-primary addsub update-cart" style="margin-left: 10px;"><strong>+</strong></button>
 				</div>
 				<div style="flex:1;">
 					<button data-product="{{item.product.id}}" data-action="delete" class="btn btn-outline-warning btn-sm update-cart" style="float: right;">Delete</button>
