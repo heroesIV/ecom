@@ -14,7 +14,7 @@ def store(request):
 	data = cartData(request)
 
 	cartItems = data['cartItems']
-	products 	= Product.objects.all()
+	products 	= Product.objects.filter(availability=True).order_by('?')
 
 	context 	= {
 		'products' 	: products,

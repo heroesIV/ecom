@@ -1,0 +1,25 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+{{order}}
+<!-- <form action="{% url 'order_status' %}" method="POST">
+{% csrf_token %}
+<script
+    src="https://checkout.razorpay.com/v1/checkout.js"
+    data-key="rzp_test_gfGuBfiQ2oOzJ9"
+    data-amount="{{ order_amount }}"
+    data-currency="INR"
+    data-order_id="{{ order_id }}"
+    data-buttontext="Pay with Razorpay"
+    data-name="Acme Corp"
+    data-description="Test transaction"
+    data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRpWzPOB8s9WRX7JXZ96x1oPESu-eoN5YUFfDKcebTKFn7piPBS&usqp=CAU"
+    data-prefill.name="{{ order.customer.name }}"
+    data-prefill.email="omkar.alternative@gmail.com"
+    data-prefill.contact="{{ order.customer.phone }}"
+    data-theme.color="#F37254"
+></script>
+<input type="hidden" custom="Hidden Element" name="hidden">
+</form> -->
+{% endblock %}

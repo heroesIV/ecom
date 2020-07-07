@@ -10,4 +10,6 @@ urlpatterns = [
 
     path('update_item/', updateItem, name='update_item'),
     path('process_order/', processOrder, name='process_order'),
+    # path('confirm_order/', confirmOrder, name='confirm_order'),
+    # path('order_status/', payment_status, name='order_status'),
 ]

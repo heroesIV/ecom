@@ -40,9 +40,19 @@
 				</div>
 
 				<hr>
-				<input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
+				<input id="make-payment" class="btn btn-success btn-block" type="submit" value="Continue">
 			</form>
 		</div>
+
+        <div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_FBL7tc8spfCsL5/view" data-text=" Pay &#8377; {{order.get_cart_total}}" data-color="#528FF0" data-size="large">
+            <script>
+                (function(){
+                  var d=document; var x=!d.getElementById('razorpay-embed-btn-js')
+                  if(x){ var s=d.createElement('script'); s.defer=!0;s.id='razorpay-embed-btn-js';
+                  s.src='https://cdn.razorpay.com/static/embed_btn/bundle.js';d.body.appendChild(s);} else{var rzp=window['__rzp__'];
+                  rzp && rzp.init && rzp.init()}})();
+              </script>
+        </div>
 
 		<div class="box-element hidden" id="payment-info">
 			<small>Payment Options</small>
@@ -92,8 +102,8 @@
 	form.addEventListener('submit', function(e){
     	e.preventDefault()
     	console.log('Form Submitted...')
-    	document.getElementById('form-button').classList.add("hidden");
-    	document.getElementById('payment-info').classList.remove("hidden");
+    	// document.getElementById('form-button').classList.add("hidden");
+    	// document.getElementById('payment-info').classList.remove("hidden");
     })
 
     document.getElementById('make-payment').addEventListener('click', function(e){
@@ -140,7 +150,7 @@
 
 			  cart = {}
 			  document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
-			  window.location.href = "{% url 'store' %}"
+			  // window.location.href = "{% url 'store' %}"
 
 			})
     }
