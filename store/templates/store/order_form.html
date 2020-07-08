@@ -6,7 +6,7 @@
 <br>
 <div class="row">
 	<div class="col-md-4" style="margin: auto;">
-		<h4 style="text-align: center;">Add Customer</h4>
+		<h4 style="text-align: center;">Update Order</h4>
 		<!-- </div> -->
 		<hr>
 		<div class="card card-body">
@@ -19,6 +19,10 @@
 					<input class="btn btn-primary btn-block" type="submit" name="Submit">
 				</div>
 				<br>
+				<br>
+				<div class="wrapper" style="text-align: center;">
+					<a class="btn btn-danger btn-block" href="{% url 'deleteOrder' order.id %}">Delete Order</a>
+				</div>
 			</form>
 		</div>
 	</div>

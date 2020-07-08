@@ -1,0 +1,65 @@
+<style type="text/css">
+	.col-md-10{
+		display: flex;
+	}
+	h5{
+		font-weight: normal;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+	}
+</style>
+
+
+<br>
+
+<div class="row">
+	<div class="col-md-10" style="margin: auto;">
+
+		<div class="col-md">
+			<div class="card text-center text-black  mb-3" id="total-orders">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Total</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h2 class="card-title">{{total_orders}}</h2>
+			  	</div>
+			</div>
+		</div>
+
+
+		<div class="col-md">
+			<div class="card text-center text-black  mb-3" id="orders-pending">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Pending</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h2 class="card-title">{{pending}}</h2>
+			  	</div>
+			</div>
+		</div>
+
+		<div class="col-md">
+			<div class="card text-center text-black  mb-3" id="orders-ready">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Ready</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h2 class="card-title">{{ready}}</h2>
+			  	</div>
+			</div>
+		</div>
+
+
+		<div class="col-md">
+			<div class="card text-center text-black  mb-3" id="orders-delivered">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Delivered</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h2 class="card-title">{{delivered}}</h2>
+			  	</div>
+			</div>
+		</div>
+
+</div>
+</div>

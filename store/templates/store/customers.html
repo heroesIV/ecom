@@ -1,4 +1,4 @@
-{%  extends 'accounts/main.html' %}
+{%  extends 'store/main2.html' %}
 
 {% block content %}
 
@@ -19,18 +19,19 @@
 					<th>ID</th>
 					<th>Name</th>
 					<th>Phone</th>
-					<th>Address</th>
-					<th></th>
+					<th>Flat</th>
+					<th>Apartment</th>
 					<th></th>
 					<th></th>
 				</tr>
-				{% for customer in customers %}
+				{% for customer,address in my_list %}
 				<tr>
 					<td>{{customer.id}}</td>
 					<td>{{customer.name}}</td>
 					<td>{{customer.phone}}</td>
-					<td>{{customer.address}}</td>
-					<td><a class="btn btn-primary btn-sm" href="{% url 'customerDetail' customer.id %}">View</a></td>
+					<td>{{address.0.0}}</td>
+					<td>{{address.0.1}}</td>
+					<!-- <td><a class="btn btn-primary btn-sm" href="">View</a></td> -->
 					<td><a class="btn btn-warning btn-sm" href="{% url 'updateCustomer' customer.id %}">Update</a></td>
 					<td><a class="btn btn-danger btn-sm" href="{% url 'deleteCustomer' customer.id %}">Remove</a></td>
 				</tr>

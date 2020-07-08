@@ -12,14 +12,15 @@ class ProductForm(ModelForm):
             'availability': CheckboxInput(attrs={'style':'width:20px;height:20px;'}),
         }
 
-# class CustomerForm(ModelForm):
-# 	class Meta:
+class CustomerForm(ModelForm):
+	class Meta:
 
-# 		model 	= Customer
-# 		fields 	= '__all__'
+		model 	= Customer
+		fields 	= '__all__'
+		exclude = ['user']
 
-# class OrderForm(ModelForm):
-# 	class Meta:
+class OrderForm(ModelForm):
+	class Meta:
 
-# 		model 	= Order
-# 		fields	= '__all__'
+		model 	= Order
+		fields	= ('status', 'paid')

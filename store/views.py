@@ -145,24 +145,6 @@ def addProduct(request):
 
 
 
-	# if request.user.is_authenticated:
-
-	# 	form		= ProductForm(request.POST or None, request.FILES)
-
-	# 	if form.is_valid():
-	# 		form.save()
-	# 		# form 	= ProductForm()
-	# 		return redirect('/products')
-
-	# 	context 	= {
-	# 		'form'	: form
-	# 	}
-
-	# 	return render(request, 'store/product_form.html', context)
-
-	# else:
-	# 	return HttpResponse("Nothing to be seen here")
-
 def updateProduct(request, pk):
 
 	if request.user.is_authenticated:
@@ -197,5 +179,183 @@ def deleteProduct(request, pk):
 
 		return render(request, 'store/delete.html', context)
 
+	else:
+		return HttpResponse("Nothing to be seen here")
+
+
+def customers(request):
+
+	customers 	= Customer.objects.all()
+
+	address = []
+	for customer in customers:
+		address.append(list(customer.shippingaddress_set.values_list('flat','apartment')))
+
+	# print()
+
+	my_list = zip(customers,address)
+
+	context		= {
+		'customers'	: customers,
+		'my_list' : my_list,
+	}
+	return render(request, 'store/customers.html', context)
+
+def addCustomer(request):
+
+	if request.user.is_authenticated:
+
+		form		= CustomerForm(request.POST or None)
+
+		if form.is_valid():
+			form.save()
+			# form 	= ProductForm()
+			return redirect('/customers')
+
+		context 	= {
+			'form'	: form
+		}
+
+		return render(request, 'store/customer_form.html', context)
+
+	else:
+		return HttpResponse("Nothing to be seen here")
+
+def updateCustomer(request, pk):
+
+	if request.user.is_authenticated:
+		customer 	= Customer.objects.get(id=pk)
+		form 		= CustomerForm(request.POST or None, instance=customer)
+
+		if form.is_valid():
+			form.save()
+			# form 	= ProductForm()
+			return redirect('/customers')
+
+		context 	= {
+			'form'	: form
+		}
+
+		return render(request, 'store/customer_form.html', context)
+	else:
+		return HttpResponse("Nothing to be seen here")
+
+def deleteCustomer(request, pk):
+
+	if request.user.is_authenticated:
+		customer 	= Customer.objects.get(id=pk)
+
+		if request.method == 'POST':
+			customer.delete()
+			return redirect('/customers')
+
+		context 	= {
+			'item'	: customer,
+		}
+
+		return render(request, 'store/delete.html', context)
+	else:
+		return HttpResponse("Nothing to be seen here")
+
+def dashboard(request):
+
+	if request.user.is_authenticated:
+		order_status = Order.objects.filter(complete=True)
+		orders 		= Order.objects.filter(complete=True).exclude(status='Delivered').order_by('date_ordered')
+		# customers 	= Order.customer.objects.all()
+		total_orders= order_status.count()
+		delivered 	= order_status.filter(status='Delivered').count()
+		pending		= order_status.filter(status='Pending').count()
+		ready		= order_status.filter(status='Ready').count()
+
+		orderitems=[]
+		address=[]
+		for order in orders:
+			orderitems.append(list(order.orderitem_set.values_list('product__name','quantity')))
+			address.append(list(order.shippingaddress_set.values_list('flat','apartment')))
+
+		my_list = zip(orders,orderitems,address)
+
+		context = {
+			'orders'		: orders,
+			# 'customers'		: customers,
+			'total_orders'	: total_orders,
+			'delivered'		: delivered,
+			'pending'		: pending,
+			'ready'			: ready,
+			'mylist'		: my_list,
+		}
+
+		return render(request, 'store/dashboard.html', context)
+	else:
+		return HttpResponse("Nothing to be seen here")
+
+def updateOrder(request, pk):
+
+	if request.user.is_authenticated:
+		order = Order.objects.get(id=pk)
+
+		form = OrderForm(request.POST or None, instance=order)
+
+		if form.is_valid():
+			form.save()
+			# form 	= ProductForm()
+			return redirect('/dashboard')
+
+		context 	= {
+			'form'	: form,
+			'order' : order
+		}
+
+		return render(request, 'store/order_form.html', context)
+
+	else:
+		return HttpResponse("Nothing to be seen here")
+
+def deleteOrder(request, pk):
+
+	if request.user.is_authenticated:
+		order 	= Order.objects.get(id=pk)
+
+		if request.method == 'POST':
+			order.delete()
+			return redirect('/dashboard')
+
+		context 	= {
+			'item'	: order,
+		}
+
+		return render(request, 'store/delete.html', context)
+	else:
+		return HttpResponse("Nothing to be seen here")
+
+def deliveredOrders(request):
+	if request.user.is_authenticated:
+		orders 		= Order.objects.filter(complete=True, status='Delivered').order_by('-date_ordered')
+		# customers 	= Order.customer.objects.all()
+		# total_orders= order_status.count()
+		# delivered 	= order_status.filter(status='Delivered').count()
+		# pending		= order_status.filter(status='Pending').count()
+		# ready		= order_status.filter(status='Ready').count()
+
+		orderitems=[]
+		address=[]
+		for order in orders:
+			orderitems.append(list(order.orderitem_set.values_list('product__name','quantity')))
+			address.append(list(order.shippingaddress_set.values_list('flat','apartment')))
+
+		my_list = zip(orders,orderitems,address)
+
+		context = {
+			# 'orders'		: orders,
+			# # 'customers'		: customers,
+			# 'total_orders'	: total_orders,
+			# 'delivered'		: delivered,
+			# 'pending'		: pending,
+			# 'ready'			: ready,
+			'mylist'		: my_list,
+		}
+
+		return render(request, 'store/delivered_orders.html', context)
 	else:
 		return HttpResponse("Nothing to be seen here")
