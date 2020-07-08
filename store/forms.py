@@ -1,8 +1,25 @@
-from django import forms
+from django.forms import ModelForm, Textarea, CheckboxInput
+
 from .models import *
 
-class shippingForm(forms.ModelForm):
+class ProductForm(ModelForm):
 	class Meta:
 
-		model 	= ShippingAddress
-		fields 	= '__all__'
+		model 	= Product
+		fields 	= ('name','description','price','availability','image')
+		widgets = {
+            'description': Textarea(attrs={'cols': 21, 'rows': 5}),
+            'availability': CheckboxInput(attrs={'style':'width:20px;height:20px;'}),
+        }
+
+# class CustomerForm(ModelForm):
+# 	class Meta:
+
+# 		model 	= Customer
+# 		fields 	= '__all__'
+
+# class OrderForm(ModelForm):
+# 	class Meta:
+
+# 		model 	= Order
+# 		fields	= '__all__'

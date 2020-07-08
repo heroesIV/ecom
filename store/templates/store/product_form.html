@@ -1,0 +1,28 @@
+{%  extends 'store/main2.html' %}
+{% load static %}
+
+{% block content %}
+
+<br>
+<div class="row">
+	<div class="col-md-6" style="margin: auto;">
+		<h4 style="text-align: center;">Add Product</h4>
+		<!-- </div> -->
+		<hr>
+		<div class="card card-body">
+			<form action="" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<table class="table">
+					{{form.as_table}}
+				</table>
+				<!-- {{form.image}} -->
+				<div class="wrapper" style="text-align: center;">
+					<input class="btn btn-primary btn-block" type="submit" name="Submit">
+				</div>
+				<br>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

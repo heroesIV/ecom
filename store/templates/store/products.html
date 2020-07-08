@@ -1,0 +1,45 @@
+{%  extends 'store/main2.html' %}
+
+{% block content %}
+
+
+
+<br>
+
+<div class="row">
+	<div class="col-md-9" style="margin: auto;">
+		<!-- <div class="card card-body"> -->
+			<h4 style="text-align: center;">Products</h4>
+		<!-- </div> -->
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'addProduct' %}">Add Product</a>
+			<table class="table">
+				<tr>
+					<th>ID</th>
+					<th>Image</th>
+					<th>Product</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th>Availability</th>
+					<th></th>
+					<th></th>
+				</tr>
+				{% for product in products %}
+				<tr>
+					<td>{{product.id}}</td>
+					<td><img class="row-image" src="{{product.imageURL}}"></td>
+					<td>{{product.name}}</td>
+					<td>{{product.description}}</td>
+					<td class="price">{{product.price}}</td>
+					<td>{{product.availability|yesno:"Available,Out of Stock"}}</td>
+					<td style="text-align: center;"><a class="btn btn-sm  btn-warning" href="{% url 'updateProduct' product.id %}">Update</a></td>
+					<td style="text-align: center;"><a class="btn btn-sm  btn-danger" href="{% url 'deleteProduct' product.id %}">Remove</a></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

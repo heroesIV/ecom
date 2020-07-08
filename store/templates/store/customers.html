@@ -1,0 +1,43 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+
+
+<br>
+
+<div class="row">
+	<div class="col-md-9" style="margin: auto;">
+		<!-- <div class="card card-body"> -->
+			<h4 style="text-align: center;">Customers</h4>
+		<!-- </div> -->
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'addCustomer' %}">Add Customer</a>
+			<table class="table">
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Phone</th>
+					<th>Address</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+				{% for customer in customers %}
+				<tr>
+					<td>{{customer.id}}</td>
+					<td>{{customer.name}}</td>
+					<td>{{customer.phone}}</td>
+					<td>{{customer.address}}</td>
+					<td><a class="btn btn-primary btn-sm" href="{% url 'customerDetail' customer.id %}">View</a></td>
+					<td><a class="btn btn-warning btn-sm" href="{% url 'updateCustomer' customer.id %}">Update</a></td>
+					<td><a class="btn btn-danger btn-sm" href="{% url 'deleteCustomer' customer.id %}">Remove</a></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

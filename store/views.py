@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse, redirect
 from django.http import JsonResponse
 import json
 import datetime
 
 from .models import *
 from .utils import *
+from .forms import *
 
 # Create your views here.
 
@@ -111,3 +112,90 @@ def processOrder(request):
 		)
 
 	return JsonResponse('Payment Complete', safe=False)
+
+def products(request):
+
+	if request.user.is_authenticated:
+		products 	= Product.objects.all()
+
+		context		= {
+			'products'	: products,
+		}
+		return render(request, 'store/products.html', context)
+
+	else:
+		return HttpResponse("Nothing to be seen here")
+
+def addProduct(request):
+
+	if request.user.is_authenticated:
+		# product = Product.objects.get(id=pk)
+
+		form = ProductForm()
+		if request.method == 'POST':
+			form = ProductForm(request.POST, request.FILES)
+			if form.is_valid():
+				form.save()
+				return redirect('/products')
+
+		context = {'form': form}
+		return render(request, 'store/product_form.html', context)
+	else:
+		return HttpResponse("Nothing to be seen here")
+
+
+
+	# if request.user.is_authenticated:
+
+	# 	form		= ProductForm(request.POST or None, request.FILES)
+
+	# 	if form.is_valid():
+	# 		form.save()
+	# 		# form 	= ProductForm()
+	# 		return redirect('/products')
+
+	# 	context 	= {
+	# 		'form'	: form
+	# 	}
+
+	# 	return render(request, 'store/product_form.html', context)
+
+	# else:
+	# 	return HttpResponse("Nothing to be seen here")
+
+def updateProduct(request, pk):
+
+	if request.user.is_authenticated:
+		product = Product.objects.get(id=pk)
+
+		form = ProductForm(instance=product)
+		if request.method == 'POST':
+			form = ProductForm(request.POST, request.FILES, instance=product)
+			if form.is_valid():
+				form.save()
+				return redirect('/products')
+
+		context = {'form': form}
+		return render(request, 'store/product_form.html', context)
+	else:
+		return HttpResponse("Nothing to be seen here")
+
+
+def deleteProduct(request, pk):
+
+	if request.user.is_authenticated:
+
+		product 	= Product.objects.get(id=pk)
+
+		if request.method == 'POST':
+			product.delete()
+			return redirect('/products')
+
+		context 	= {
+			'item'	: product,
+		}
+
+		return render(request, 'store/delete.html', context)
+
+	else:
+		return HttpResponse("Nothing to be seen here")
