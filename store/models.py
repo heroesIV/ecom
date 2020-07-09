@@ -32,7 +32,7 @@ class Product(models.Model):
 		try:
 			url 	= self.image.url
 		except:
-			url 	= '/comingsoon.jpg'
+			url 	= '/images/comingsoon.jpg'
 
 		return url
 
