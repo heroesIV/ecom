@@ -56,6 +56,12 @@ def checkout(request):
 
 	return render(request, 'store/checkout.html', context)
 
+def orderPlaced(request, pk):
+
+	amount = pk
+	context = {'amount': amount}
+	return render(request, 'store/order_placed.html', context)
+
 def updateItem(request):
 	data = json.loads(request.body)
 	productId = data['productId']
@@ -332,11 +338,6 @@ def deleteOrder(request, pk):
 def deliveredOrders(request):
 	if request.user.is_authenticated:
 		orders 		= Order.objects.filter(complete=True, status='Delivered').order_by('-date_ordered')
-		# customers 	= Order.customer.objects.all()
-		# total_orders= order_status.count()
-		# delivered 	= order_status.filter(status='Delivered').count()
-		# pending		= order_status.filter(status='Pending').count()
-		# ready		= order_status.filter(status='Ready').count()
 
 		orderitems=[]
 		address=[]
@@ -347,12 +348,6 @@ def deliveredOrders(request):
 		my_list = zip(orders,orderitems,address)
 
 		context = {
-			# 'orders'		: orders,
-			# # 'customers'		: customers,
-			# 'total_orders'	: total_orders,
-			# 'delivered'		: delivered,
-			# 'pending'		: pending,
-			# 'ready'			: ready,
 			'mylist'		: my_list,
 		}
 
