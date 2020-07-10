@@ -15,7 +15,7 @@ def store(request):
 	data = cartData(request)
 
 	cartItems = data['cartItems']
-	products 	= Product.objects.filter(availability=True).order_by('?')
+	products 	= Product.objects.order_by('-availability')
 
 	context 	= {
 		'products' 	: products,
@@ -122,7 +122,7 @@ def processOrder(request):
 def products(request):
 
 	if request.user.is_authenticated:
-		products 	= Product.objects.all()
+		products 	= Product.objects.all().order_by('-stock')
 
 		context		= {
 			'products'	: products,

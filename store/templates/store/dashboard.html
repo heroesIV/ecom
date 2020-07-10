@@ -23,28 +23,32 @@
 			<!-- <a class="btn btn-primary  btn-sm btn-block" href="">Create Order</a> -->
 			<table class="table table-sm">
 				<tr>
-					<th>Date Ordered</th>
+					<!-- <th></th> -->
 					<th>Customer</th>
-					<th></th>
-					<th>Flat</th>
-					<th>Apartment</th>
+					<!-- <th></th> -->
+					<th>Address</th>
+					<!-- <th>Apartment</th> -->
 					<th>Phone</th>
 					<th>Product</th>
-					<th>Quantity</th>
+					<!-- <th>Quantity</th> -->
+					<!-- <th></th> -->
+					<th>Amount</th>
 					<th>Status</th>
 					<th>Payment</th>
 					<th></th>
 				</tr>
 				{% for order,item,address in mylist %}
 					<tr>
-						<td>{{order.date_ordered}}</td>
-						<td><a class="btn btn-outline-dark btn-sm btn btn-block" href="">{{order.customer.name}}</a></td>
-						<td>&emsp;</td>
-						<td>{{address.0.0}}</td>
-						<td>{{address.0.1}}</td>
+						<!-- <td>{{order.date_ordered}}</td> -->
+						<td><strong>{{order.customer.name}}</strong></td>
+						<!-- <td>&emsp;</td> -->
+						<td>{{address.0.0}}, {{address.0.1}}</td>
+						<!-- <td>{{address.0.1}}</td> -->
 						<td>{{order.customer.phone}}</td>
-						<td>{% for j in item %}{{j.0}}<br>{% endfor %}</td>
-						<td>{% for j in item %}{{j.1}}<br>{% endfor %}</td>
+						<td>{% for j in item %}{{j.0}} ({{j.1}})<br>{% endfor %}</td>
+						<!-- <td>{% for j in item %}{{j.1}}<br>{% endfor %}</td> -->
+						<!-- <td><strong>= {{order.get_cart_items}}</strong></td> -->
+						<td>{{order.get_cart_total}}<br>({{order.get_cart_items}} Items)</td>
 						<td>{{order.status}}</td>
 						<td>{{order.paid|yesno:"Paid,Due"}}</td>
 						<td><a class="btn btn-warning btn-sm" href="{% url 'updateOrder' order.id %}">Update</a></td>
