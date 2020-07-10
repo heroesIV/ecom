@@ -28,7 +28,8 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'cornerstonecupcakes.herokuapp.com',
     '192.168.0.109',
-    '127.0.0.1'
+    '127.0.0.1',
+    'cclive-test.herokuapp.com'
 ]
 
 
@@ -44,6 +45,8 @@ INSTALLED_APPS = [
 
     # my apps
     'store.apps.StoreConfig',
+
+    'storages',
 
 ]
 
@@ -84,12 +87,27 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'cornerstonecupcakes',
+#         'USER': 'omkaryadav',
+#         'PASSWORD': 'Shirish1234$',
+#         'HOST': 'database-1.cjmbj1tbixpq.us-east-2.rds.amazonaws.com',
+#         'PORT': '5432'
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
@@ -139,3 +157,14 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
+
+#Amazon S3
+
+AWS_ACCESS_KEY_ID = 'AKIAV7V62O3GUDB52XEC'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'cornerstonecupcakes-bucket'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
