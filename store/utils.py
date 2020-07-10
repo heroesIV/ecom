@@ -90,8 +90,11 @@ def guestOrder(request, data):
 			order=order,
 			quantity=item['quantity'],
 		)
+		print(product.stock)
+		print(item['quantity'])
+		print(product.stock - item['quantity'])
 		product.stock = product.stock - item['quantity']
-		if product.stock == 0:
+		if product.stock <= 0:
 			product.availability = False
 		product.save()
 	return customer, order
