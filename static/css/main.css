@@ -1,67 +1,21 @@
-@font-face {
-    font-family: 'product_sansregular';
-    src: url('../fonts/product_sans_regular-webfont.woff2') format('woff2'),
-         url('../fonts/product_sans_regular-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
-
-@font-face {
-    font-family: 'product_sansitalic';
-    src: url('../fonts/product_sans_italic-webfont.woff2') format('woff2'),
-         url('../fonts/product_sans_italic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
-
-@font-face {
-    font-family: 'product_sansbold';
-    src: url('../fonts/product_sans_bold-webfont.woff2') format('woff2'),
-         url('../fonts/product_sans_bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
-
-@font-face {
-    font-family: 'product_sansbold_italic';
-    src: url('../fonts/product_sans_bold_italic-webfont.woff2') format('woff2'),
-         url('../fonts/product_sans_bold_italic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
 body{
 	/*background-color: hsl(0, 0%, 98%);*/
 	background-color: #000;
 	color: #fff;
-	font-family: product_sansregular;
+	font-family: Quicksand;
 	font-weight: normal;
 }
 
 strong{
-	font-family: product_sansbold;
-	font-weight: normal;
+	font-family: Quicksand;
+	/*font-weight: bold;*/
 }
 
 h1,h2,h3,h4,h5,h6{
 	/*color:hsl(0, 0%, 30%);*/
 	color: #fff;
-	font-family: product_sansbold;
-	font-weight: normal;
+	font-family: Quicksand;
+	/*font-weight: bold;*/
 }
 
 .logo{
@@ -197,8 +151,8 @@ h1,h2,h3,h4,h5,h6{
 	background-color: #f1a5cf!important;
 	border-color: #f1a5cf!important;
 	color: #000;
-	font-family: product_sansbold;
-	font-weight: normal;
+	font-family: Quicksand;
+	font-weight: bold;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 }
@@ -206,8 +160,8 @@ h1,h2,h3,h4,h5,h6{
 .btn-warning:hover, .btn-warning:active, .btn-danger:hover, .btn-danger:active{
 	border-color: #f1a5cf!important;
 	color: #fff!important;
-	font-family: product_sansbold;
-	font-weight: normal;
+	font-family: Quicksand;
+	font-weight: bold;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 }
@@ -215,7 +169,7 @@ h1,h2,h3,h4,h5,h6{
 .btn-outline-warning, .btn-outline-warning:visited, .btn-outline-danger, .btn-outline-danger:visited{
 	border-color: #f1a5cf!important;
 	color: #f1a5cf;
-	font-family: product_sansregular;
+	font-family: Quicksand;
 	font-weight: normal;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -225,7 +179,7 @@ h1,h2,h3,h4,h5,h6{
 	border-color: #f1a5cf!important;
 	background-color: #f1a5cf!important;
 	color: #000!important;
-	font-family: product_sansregular;
+	font-family: Quicksand;
 	font-weight: normal;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -236,8 +190,8 @@ h1,h2,h3,h4,h5,h6{
 	background-color: #a5dcb3!important;
 	border-color: #a5dcb3!important;
 	color: #000;
-	font-family: product_sansbold;
-	font-weight: normal;
+	font-family: Quicksand;
+	font-weight: bold;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 }
@@ -245,7 +199,7 @@ h1,h2,h3,h4,h5,h6{
 .btn-outline-primary, .btn-outline-primary:visited, .btn-outline-success, .btn-outline-success:visited{
 	border-color: #a5dcb3!important;
 	color: #a5dcb3;
-	font-family: product_sansregular;
+	font-family: Quicksand;
 	font-weight: normal;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -255,7 +209,7 @@ h1,h2,h3,h4,h5,h6{
 	background-color: #a5dcb3!important;
 	border-color: #a5dcb3!important;
 	color: #000;
-	font-family: product_sansregular;
+	font-family: Quicksand;
 	font-weight: normal;
 	text-transform: uppercase;
 	letter-spacing: 1px;
