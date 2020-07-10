@@ -30,9 +30,9 @@ class Product(models.Model):
 	@property
 	def imageURL(self):
 		try:
-			url 	= '/static' + self.image.url
+			url 	= self.image.url
 		except:
-			url 	= '/static/images/comingsoon.jpg'
+			url 	= '/images/comingsoon.jpg'
 
 		return url
 
