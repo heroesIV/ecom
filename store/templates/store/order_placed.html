@@ -4,39 +4,39 @@
 {% block content %}
 
 <style type="text/css">
-	.center{
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-		width: 50%;
-	}
+    .center{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
 
-	.navbar{
-		display: none;
-	}
+    .navbar{
+        display: none;
+    }
 
-	p{
-		margin-bottom: 0;
-	}
+    p{
+        margin-bottom: 0;
+    }
 </style>
 
 <div class="row">
-	<div class="col-lg-6" style="margin: auto; text-align: center;">
-		<br>
-		<br>
-		<img class="center" src="{% static 'images/round_logo.png' %}">
-		<br>
-		<h2>Order Placed!</h2>
-		<p style="color: #f1a5cf;">Cupcakes incoming! <br>Thank you for choosing Cornerstone Cupcakes!</p>
-		<br>
-		<br>
-		<p>You have to pay</p>
-		<h1 style="font-size: 70px;">&#8377; {{amount}}</h1>
-		<br>
+    <div class="col-lg-6" style="margin: auto; text-align: center;">
+        <br>
+        <br>
+        <img class="center" src="{% static 'images/round_logo.png' %}">
+        <br>
+        <h2>Order Placed!</h2>
+        <p style="color: #f1a5cf;">Cupcakes incoming! <br>Thank you for choosing Cornerstone Cupcakes!</p>
+        <br>
+        <br>
+        <p>You have to pay</p>
+        <h1 style="font-size: 70px;">&#8377; {{amount}}</h1>
+        <br>
 
-		<!-- <p>Pay Now</p> -->
-		<p style="word-spacing: 10px; color: #a5dcb3;">UPI Visa MasterCard GooglePay</p>
-		<div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_FBL7tc8spfCsL5/view" data-text=" Pay Now &#8377; {{amount}}" data-color="#a5dcb3" data-size="large">
+        <!-- <p>Pay Now</p> -->
+        <p style="word-spacing: 10px; color: #a5dcb3;">UPI Visa MasterCard GooglePay</p>
+        <!-- <div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_FBL7tc8spfCsL5/view" data-text=" Pay Now &#8377; {{amount}}" data-color="#a5dcb3" data-size="large">
             <script>
                 (function(){
                   var d=document; var x=!d.getElementById('razorpay-embed-btn-js')
@@ -44,11 +44,21 @@
                   s.src='https://cdn.razorpay.com/static/embed_btn/bundle.js';d.body.appendChild(s);} else{var rzp=window['__rzp__'];
                   rzp && rzp.init && rzp.init()}})();
               </script>
+        </div> -->
+        <div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_FDAuKuTKg6Hgq8/view" data-text="Pay Now &#8377; {{amount}}" data-color="#A5DCB3" data-size="large">
+          <script>
+            (function(){
+              var d=document; var x=!d.getElementById('razorpay-embed-btn-js')
+              if(x){ var s=d.createElement('script'); s.defer=!0;s.id='razorpay-embed-btn-js';
+              s.src='https://cdn.razorpay.com/static/embed_btn/bundle.js';d.body.appendChild(s);} else{var rzp=window['__rzp__'];
+              rzp && rzp.init && rzp.init()}})();
+          </script>
         </div>
+
         <p style="color: #a5dcb3;">Or pay Cash on Delivery!</p>
         <br>
         <a href="{% url 'store' %}" class="btn btn-warning btn-sm">Order again</a>
-	</div>
+    </div>
 </div>
 
 {% endblock content %}
