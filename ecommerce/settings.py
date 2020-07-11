@@ -30,7 +30,7 @@ ALLOWED_HOSTS = [
     '192.168.0.109',
     '127.0.0.1',
     'cclive-test.herokuapp.com',
-    'cornerstonecupcakes.com',
+    '.cornerstonecupcakes.com',
 ]
 
 
